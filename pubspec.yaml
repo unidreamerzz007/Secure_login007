@@ -1,5 +1,5 @@
-name: loginpage
-description: A new Flutter project.
+name: loginapp
+description: A new Flutter login app.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -16,9 +16,12 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
+  
+
 dependencies:
   flutter:
     sdk: flutter
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
