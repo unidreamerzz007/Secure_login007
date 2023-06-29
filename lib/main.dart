@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                'https://w.forfun.com/fetch/67/674d9f64c8a3c0110654ebdd1e037503.jpeg?h=600&r=0.5'),
+                'https://lh3.googleusercontent.com/mmHwHbgIn0C65XeNPodQlgJLBN-pBKYf-94QgrRYRt_pQ21ATemFXg0vN0cMLDVXkN0i9ueUuHsOhcYExFXcg-p9LTwgMwmKj96nyoT10roN31qGlPKpa9w8yF_r_VVE0cKK_QYXWOk8-bnNJpD4YeCBZOOxeF92Ag6XFiWEbyt8XLUvtxIQku8kqXlBWODiMoRHwk8VHmsmiWEVDmbp5vWlhQ51gdOgxEJD_PBq6uDzeBdZEGswkaXDIDJgSLB8yucDL8mVcY4WGQYo1FZHrDNXCX_4KpcFJKTCM8cbX-tJYSWGB5-PiuGmCnxyjh5HNBZWefCNNXFKbwPAZUuEtHevZ4U3EOiCfoV_ghVNPrPecAJyFDsMMj8IRHl4kB5gJKt-KpCN3Ij6NRhbnxbR5a7_tsTRoPvPjyjgSiy4JpiL-DSKrQ7lgBmXyYkTw4OM3qWrVGs3MaaNSMILX_RD4bIjXgviRh88OaVbj59eo024SzosRO0Wyoib1LePwFJbSmrYXwJooiNKJtqIhtICmVLI4WFzj-PFfpDcJkkomDnTLT1i_PXgBIn7zCpnInion9yamTY2n0-G35HRAtMnzZBFNG-PaMKvgOlP6xlS-uX83jTJ7905u79mk8xtfs3X0gYrRAPvrndCrn6I3kG3fIozlFKZ7raX0fCBXL2eR4Aiws0Jkw3BvPp3eqsnf0WgoPy_jVbHrmCuu5PcbGwPdFAw6FhowTglnRTKcqtdyiGhVlZ8vG2h0SmfKjeGCID25uRrReqVnz44YKEc53O_ODKEBhI8NW4ZmFWl7LJX051rQBg0LxKNIrZ-LVVkMKVuCX5i0c4lldYE0PHhYJNk1aHnmlH60lmnolAOHPjRH-_mROeUFoeF5M7QdX_3blpGdMt8amwWuAEPvCriNBrQIDcE5Baj9qkGaTOos751s-UdzFa7frJS9SlGT0vvmCmo92cgn0fQD1ck3qGkxPSqxjUsYKhZ6eaHs4kJHi_rCKSpey6q-Q=w433-h962-s-no?authuser=0'),
             fit: BoxFit.cover,
           ),
         ),
@@ -252,28 +252,32 @@ class ThirdPage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('Welcome'),
-                    content: Text('Welcome to the toxic world!'),
-                    actions: <Widget>[
-                      TextButton(
-                        child: Text('OK'),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
-            child: Text('Do you know where you are..click here😈'),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Welcome'),
+                      content: Text('Welcome to the toxic world!'),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text('OK'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text('Do you know where you are..click here😈✌️'),
+            ),
           ),
         ),
       ),
