@@ -113,14 +113,14 @@ class SecureLoginPage extends StatefulWidget {
 class _SecureLoginPageState extends State<SecureLoginPage> {
   int _currentIndex = 0;
 
-  final List<String> backgroundImageUrls = [
+  final List<String> backgroundImagePaths = [
     'assets/images/gopal.jpg',
     'assets/images/adhi.jpg',
     'assets/images/Rahul vazha.jpg',
     'assets/images/rachana.jpg',
     'assets/images/devi.jpg',
     'assets/images/poppu.jpg',
-    // Add more image URLs for each page
+    // Add more image paths for each page
   ];
 
   final List<String> animalNames = [
@@ -162,14 +162,14 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
                   });
                 },
               ),
-              items: List.generate(backgroundImageUrls.length, (index) {
+              items: List.generate(backgroundImagePaths.length, (index) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(backgroundImageUrls[index]),
+                          image: AssetImage(backgroundImagePaths[index]),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -194,7 +194,7 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
             ),
             SizedBox(height: 20),
             Text(
-              'Page ${_currentIndex + 1} of ${backgroundImageUrls.length}',
+              'Page ${_currentIndex + 1} of ${backgroundImagePaths.length}',
               style: TextStyle(fontSize: 16),
             ),
           ],
@@ -246,8 +246,7 @@ class ThirdPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                'https://lh3.googleusercontent.com/tYJYnt5jlOf073t7GVVXrJ4iAH6Gt6ZPRlfME1dbK_MxCXxTO6RtyW17fJkhPpGdPCKfhk2lK_n5Odr9VoepljWPq-p8EhFiLlFM5nlDn-mtwDXwvKK1knZiEDpXIG_pdRPWe9GsGXsnBKEx7nEXcaMW9lowQ7BI-FrbWmSPK8IMoAetQYD4rRlW75l-cJjj8-flrF5jKDVQLgdRhfQ8Kt2wT4Eyv41jwXZkw3y76V6yASxQi3cOjCdb306Xnpt_IlE5P9wC3I1GgDeiFnbZrLjWNB7b0zzW23hmvsTswlHrGhCDm9hLmSTmYLno-lnXRmGiDE4bDGdFA8TFs3IH_d_XePWXGWjpMXS1k1XxBN0Nb5M-TjPrjkKl9H6mO82FT815y5qrvqai6_nfHfNuoFkazjmHdUCjrF8HSO6Cbnyadllm8X1Mx5uCpd3yY1DxAmfgy2xHLMQ56SyMqpF1d01136EykWakgR-a6IQTH-nx66o4NV57D7nqewnE-AbdFh5lGnkSdaEbmO8cFkG9tuaHtmaKkILpcsXmRksbrE3KOUIf4aHo-HvAZErxjuqq0FOwZdR6DQwPRue5KvotnMgY0MnuiR5M_YvRVMbSPesz45Q6mL67cXyIiFNoUP6VXBnIOCBNEXrluF0OQFFbvtBSD0z3MvV_nbSEDsbatq37gZvAayBmka268M9qS6FxSpzyDd5eIYFk_4yEeNHI6-eQhtAtGkCcI65nZNK0T5-zc0OrI2k3kpl_CYTdEFyRA54KojKvTOlezB1Lzsfg3bpW7ile2tgkfGYovazlNMUre88dEv-HzQcjrMQlsN-PRTrxPdKV6AbwQxnhFXNbhPea1Oemb2OSzavpShAUATHkcjlVorB2HlRJ5Ed8CmC9ZN6cqRYWXYY2ZbWOSoQKHAHDBu8NJCjAMPyuayvWe9uiezSl884Mo5vvj0_I4Vo0j2Ldp2SGjKswQOh18O1pX3CeIioPG3u42Wbmi5P1PKjsn22yCQ=w722-h962-s-no?authuser=0'),
+            image: AssetImage('assets/images/shravan.jpg'),
             fit: BoxFit.cover,
           ),
         ),
