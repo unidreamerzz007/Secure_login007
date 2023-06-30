@@ -338,7 +338,7 @@ class FifthPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.jpg'),
+            image: AssetImage('assets/images/page5_background.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -348,11 +348,11 @@ class FifthPage extends StatelessWidget {
             SizedBox(height: 20),
             CircleAvatar(
               radius: 80,
-              backgroundImage: AssetImage('assets/images/profile.jpg'),
+              backgroundImage: AssetImage('assets/images/profile_picture.jpg'),
             ),
             SizedBox(height: 20),
             Text(
-              'John Doe',
+              'Adithya Anil',
               style: TextStyle(
                 fontSize: 24,
                 color: Colors.white,
@@ -371,21 +371,21 @@ class FifthPage extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.email, color: Colors.white),
               title: Text(
-                'johndoe@example.com',
+                'unidreamerzz@gmail.com',
                 style: TextStyle(color: Colors.white),
               ),
             ),
             ListTile(
               leading: Icon(Icons.phone, color: Colors.white),
               title: Text(
-                '+1234567890',
+                '+91 8921959626',
                 style: TextStyle(color: Colors.white),
               ),
             ),
             ListTile(
               leading: Icon(Icons.location_on, color: Colors.white),
               title: Text(
-                'New York, USA',
+                'Kerala, India',
                 style: TextStyle(color: Colors.white),
               ),
             ),
