@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(LoginApp());
@@ -19,6 +22,7 @@ class LoginApp extends StatelessWidget {
       routes: {
         '/secureLogin': (context) => SecureLoginPage(),
         '/thirdPage': (context) => ThirdPage(),
+        '/fifthPage': (context) => FifthPage(),
       },
     );
   }
@@ -29,7 +33,11 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final String _validUsername = 'unidreamerzz@gmail.com';
@@ -60,6 +68,33 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    _animation = Tween<double>(begin: .7, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.ease,
+      ),
+    )..addListener(() {
+        setState(() {});
+      });
+
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -94,9 +129,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 32.0),
-            ElevatedButton(
-              onPressed: _login,
-              child: Text('Login'),
+            AnimatedBuilder(
+              animation: _animation,
+              builder: (BuildContext context, Widget? child) {
+                return Transform.scale(
+                  scale: _animation.value,
+                  child: ElevatedButton(
+                    onPressed: _login,
+                    child: Text('Login'),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -153,7 +196,7 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: 280.0,
+                height: 400.0,
                 enlargeCenterPage: true,
                 enableInfiniteScroll: false,
                 onPageChanged: (index, reason) {
@@ -190,7 +233,7 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
                     );
                   },
                 );
-              }),
+              }).toList(),
             ),
             SizedBox(height: 20),
             Text(
@@ -229,6 +272,8 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
         onTap: (int index) {
           if (index == 2) {
             Navigator.pushNamed(context, '/thirdPage');
+          } else if (index == 4) {
+            Navigator.pushNamed(context, '/fifthPage');
           }
         },
       ),
@@ -277,6 +322,84 @@ class ThirdPage extends StatelessWidget {
               child: Text('Do you know where you are..click here😈✌️'),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class FifthPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 20),
+            CircleAvatar(
+              radius: 80,
+              backgroundImage: AssetImage('assets/images/profile.jpg'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'John Doe',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Software Developer',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(height: 20),
+            ListTile(
+              leading: Icon(Icons.email, color: Colors.white),
+              title: Text(
+                'johndoe@example.com',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.phone, color: Colors.white),
+              title: Text(
+                '+1234567890',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.location_on, color: Colors.white),
+              title: Text(
+                'New York, USA',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle button press
+                },
+                child: Text('Edit Profile'),
+              ),
+            ),
+          ],
         ),
       ),
     );

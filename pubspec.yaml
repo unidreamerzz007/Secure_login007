@@ -7,6 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fluttertoast: ^8.0.8
   carousel_slider: ^4.0.0
 
 dev_dependencies:
@@ -25,3 +26,5 @@ flutter:
     - assets/images/devi.jpg
     - assets/images/poppu.jpg
     - assets/images/shravan.jpg
+    - assets/images/background.jpg
+    - assets/images/profile.jpg
