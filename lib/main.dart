@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'securelogin.dart';
 
 void main() {
   runApp(LoginApp());
@@ -12,7 +13,7 @@ class LoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login App',
+      title: 'funkyfoto',
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.black,
@@ -70,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Here'),
+        title: Text('funkyfoto'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -141,139 +142,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class SecureLoginPage extends StatefulWidget {
-  @override
-  _SecureLoginPageState createState() => _SecureLoginPageState();
-}
-
-class _SecureLoginPageState extends State<SecureLoginPage> {
-  int _currentIndex = 0;
-
-  final List<String> backgroundImagePaths = [
-    'assets/images/gopal.jpg',
-    'assets/images/adhi.jpg',
-    'assets/images/Rahul vazha.jpg',
-    'assets/images/rachana.jpg',
-    'assets/images/devi.jpg',
-    'assets/images/poppu.jpg',
-    // Add more image paths for each page
-  ];
-
-  final List<String> animalNames = [
-    'Gopal',
-    'Adhi',
-    'RN Vazha',
-    'Rachana',
-    'Devi',
-    'Poppu',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Secure Login'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.indigo.shade800,
-              Colors.black,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Column(
-          children: [
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 400.0,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-              ),
-              items: List.generate(backgroundImagePaths.length, (index) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(backgroundImagePaths[index]),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              // Handle button press
-                            },
-                            child: Text(
-                              animalNames[index],
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Page ${_currentIndex + 1} of ${backgroundImagePaths.length}',
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Likes',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profile',
-          ),
-        ],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.black,
-        onTap: (int index) {
-          if (index == 2) {
-            Navigator.pushNamed(context, '/thirdPage');
-          } else if (index == 4) {
-            Navigator.pushNamed(context, '/fifthPage');
-          }
-        },
       ),
     );
   }
