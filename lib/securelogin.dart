@@ -143,6 +143,8 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
             Navigator.pushNamed(context, '/thirdPage');
           } else if (index == 4) {
             Navigator.pushNamed(context, '/fifthPage');
+          } else if (index == 0) {
+            Navigator.pushNamed(context, '/SecureLoginPage');
           }
         },
       ),
