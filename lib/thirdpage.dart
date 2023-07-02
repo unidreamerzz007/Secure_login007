@@ -1,52 +1,106 @@
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatelessWidget {
+class ThirdPage extends StatefulWidget {
+  @override
+  _ThirdPageState createState() => _ThirdPageState();
+}
+
+class _ThirdPageState extends State<ThirdPage> {
+  bool isToxicPoemVisible = false;
+  bool isToxicQuotesVisible = false;
+
+  List<String> toxicQuotes = [
+    'A toxic friend is like a parasite, draining your energy and happiness.',
+    'Toxic friends are experts at manipulation, using your vulnerabilities against you.',
+    'A true friend uplifts you, but a toxic friend brings you down.',
+    'Toxic friends thrive on drama and chaos, leaving you emotionally exhausted.',
+    'Don\'t let toxic friends poison your self-worth and confidence.'
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showWelcomeDialog();
+    });
+  }
+
+  void showWelcomeDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Welcome',
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Welcome to the toxic world!',
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('La Toxica ShravanDAA'),
+        title: Text(
+          'La Toxica ShravanDAA',
+          style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.purple,
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Sidebar',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
+            // ... existing code ...
           ],
         ),
       ),
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/shravan.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+          Image.asset(
+            'assets/images/shravan.jpg',
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
           ),
-          Positioned(
-            top: 0,
-            left: 0,
-            bottom:
-                56.0, // Adjust the value based on the height of the BottomNavigationBar
-            width: MediaQuery.of(context).size.width *
-                0.4, // Adjust the width as needed
-            child: Container(
-              color: Colors.white.withOpacity(0.8),
-              padding: EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
+          Center(
+            child: AnimatedOpacity(
+              opacity: isToxicPoemVisible ? 1.0 : 0.0,
+              duration: Duration(milliseconds: 500),
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -55,12 +109,18 @@ class ThirdPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    SizedBox(height: 20.0),
                     Text(
                       'In the darkest corners of our lives, toxic friends reside. They disguise themselves with pretty lies, their friendship we often confide. But beneath their smiling faces, toxicity resides. They drain our energy, leaving empty spaces, and cast shadows on our tides. Toxic friends sow seeds of doubt, like poison in our minds. They plant thorns along our route, leaving scars that never unwind. Yet, we hold on to their false charm, hoping for a change. But toxic friends only bring harm, their friendship feels so strange. So let us break free from their grip, reclaim our strength anew. For toxic friends, we must unzip, and bid them a final adieu.',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),
@@ -68,30 +128,96 @@ class ThirdPage extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Welcome'),
-                        content: Text('Welcome to the toxic world!'),
-                        actions: <Widget>[
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
+            alignment: Alignment.center,
+            child: AnimatedOpacity(
+              opacity: isToxicQuotesVisible ? 1.0 : 0.0,
+              duration: Duration(milliseconds: 500),
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Toxic Friendship Quotes',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Column(
+                      children: toxicQuotes.map((quote) {
+                        return Text(
+                          quote,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Montserrat',
+                            color: Colors.white,
                           ),
-                        ],
-                      );
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 32.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        isToxicPoemVisible = !isToxicPoemVisible;
+                      });
                     },
-                  );
-                },
-                child: Text('Do you know where you are..click here😈✌️'),
+                    child: Text(
+                      'Toxic Poem',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xff1239e5),
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        isToxicQuotesVisible = !isToxicQuotesVisible;
+                      });
+                    },
+                    child: Text(
+                      'Toxic Quotes',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xff1239e5),
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -120,8 +246,8 @@ class ThirdPage extends StatelessWidget {
             label: 'Profile',
           ),
         ],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Color(0xfff8f6f6),
+        selectedItemColor: Colors.purple,
+        unselectedItemColor: Colors.grey,
         backgroundColor: Colors.black,
         onTap: (int index) {
           if (index == 2) {
@@ -129,7 +255,7 @@ class ThirdPage extends StatelessWidget {
           } else if (index == 4) {
             Navigator.pushNamed(context, '/fifthPage');
           } else if (index == 0) {
-            Navigator.pushNamed(context, '/secureLoginPage');
+            Navigator.pushNamed(context, '/secureLogin');
           }
         },
       ),
@@ -139,6 +265,7 @@ class ThirdPage extends StatelessWidget {
           // Or replace '/secureLogin' with '/secondPage' to navigate to the SecondPage
         },
         child: Icon(Icons.arrow_back),
+        backgroundColor: Colors.purple,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

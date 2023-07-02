@@ -23,7 +23,7 @@ class LoginApp extends StatelessWidget {
       home: LoginPage(),
       routes: {
         '/secureLogin': (context) => SecureLoginPage(),
-        '/SecureLoginPage': (context) => SecureLoginPage(),
+        '/secureLoginPage': (context) => SecureLoginPage(),
         '/thirdPage': (context) => ThirdPage(),
         '/fifthPage': (context) => FifthPage(),
       },
@@ -145,108 +145,6 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ThirdPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('La Toxica ShravanDAA'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Sidebar',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text('Poem'),
-              onTap: () {
-                Navigator.of(context).pop(); // Close the sidebar
-                // Add your logic to show the poem or navigate to a poem page
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.thumb_up),
-              title: Text('Like'),
-              onTap: () {
-                Navigator.of(context).pop(); // Close the sidebar
-                // Add your logic for the like button
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.thumb_down),
-              title: Text('Dislike'),
-              onTap: () {
-                Navigator.of(context).pop(); // Close the sidebar
-                // Add your logic for the dislike button
-              },
-            ),
-          ],
-        ),
-      ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/shravan.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Welcome'),
-                        content: Text('Welcome to the toxic world!'),
-                        actions: <Widget>[
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                child: Text('Do you know where you are..click here😈✌️'),
-              ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/secureLogin');
-          // Or replace '/secureLogin' with '/secondPage' to navigate to the SecondPage
-        },
-        child: Icon(Icons.arrow_back),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
