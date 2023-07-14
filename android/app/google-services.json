@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "17635673579",
+    "project_id": "funkyfoto-dff19",
+    "storage_bucket": "funkyfoto-dff19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17635673579:android:6521521154b292a57d45ae",
+        "android_client_info": {
+          "package_name": "com.unidreamerzz.funkyphoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17635673579-iv3mps04v2s8hji0nop17tchpkeon4e6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unidreamerzz.funkyphoto",
+            "certificate_hash": "2b24594c03aa4cbc3b55b56d3b682a1d1b6b5c4e"
+          }
+        },
+        {
+          "client_id": "17635673579-9tpih4334m1o461067m6sb6lc4eibrt6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOUaPG8INFmEVGHZOUt_RnTrVBpZ5jOSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17635673579-9tpih4334m1o461067m6sb6lc4eibrt6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

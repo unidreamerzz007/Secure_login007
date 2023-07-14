@@ -10,11 +10,11 @@ class _ThirdPageState extends State<ThirdPage> {
   bool isToxicQuotesVisible = false;
 
   List<String> toxicQuotes = [
-    'A toxic friend is like a parasite, draining your energy and happiness.',
-    'Toxic friends are experts at manipulation, using your vulnerabilities against you.',
-    'A true friend uplifts you, but a toxic friend brings you down.',
-    'Toxic friends thrive on drama and chaos, leaving you emotionally exhausted.',
-    'Don\'t let toxic friends poison your self-worth and confidence.'
+    '1.A toxic friend is like a parasite, draining your energy and happiness.',
+    '2.Toxic friends are experts at manipulation, using your vulnerabilities against you.',
+    '3.A true friend uplifts you, but a toxic friend brings you down.',
+    '4.Toxic friends thrive on drama and chaos, leaving you emotionally exhausted.',
+    '5.Don\'t let toxic friends poison your self-worth and confidence.'
   ];
 
   @override
@@ -46,7 +46,7 @@ class _ThirdPageState extends State<ThirdPage> {
           actions: <Widget>[
             TextButton(
               child: Text(
-                'OK',
+                'I am ready',
                 style: TextStyle(
                   fontFamily: 'Montserrat',
                 ),
@@ -72,7 +72,7 @@ class _ThirdPageState extends State<ThirdPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xff3a0abf),
       ),
       drawer: Drawer(
         child: ListView(
@@ -113,11 +113,11 @@ class _ThirdPageState extends State<ThirdPage> {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 5.0),
                     Text(
                       'In the darkest corners of our lives, toxic friends reside. They disguise themselves with pretty lies, their friendship we often confide. But beneath their smiling faces, toxicity resides. They drain our energy, leaving empty spaces, and cast shadows on our tides. Toxic friends sow seeds of doubt, like poison in our minds. They plant thorns along our route, leaving scars that never unwind. Yet, we hold on to their false charm, hoping for a change. But toxic friends only bring harm, their friendship feels so strange. So let us break free from their grip, reclaim our strength anew. For toxic friends, we must unzip, and bid them a final adieu.',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontFamily: 'Montserrat',
                         color: Colors.white,
                       ),
@@ -151,13 +151,13 @@ class _ThirdPageState extends State<ThirdPage> {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 5.0),
                     Column(
                       children: toxicQuotes.map((quote) {
                         return Text(
                           quote,
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 18,
                             fontFamily: 'Montserrat',
                             color: Colors.white,
                           ),
@@ -172,7 +172,7 @@ class _ThirdPageState extends State<ThirdPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 32.0),
+              padding: EdgeInsets.only(bottom: 16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -246,7 +246,7 @@ class _ThirdPageState extends State<ThirdPage> {
             label: 'Profile',
           ),
         ],
-        selectedItemColor: Colors.purple,
+        selectedItemColor: Color(0xff16d273),
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.black,
         onTap: (int index) {
@@ -265,7 +265,7 @@ class _ThirdPageState extends State<ThirdPage> {
           // Or replace '/secureLogin' with '/secondPage' to navigate to the SecondPage
         },
         child: Icon(Icons.arrow_back),
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xff16d273),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

@@ -177,7 +177,7 @@ class _SecureLoginPageState extends State<SecureLoginPage> {
                 child: Icon(
                   emojiReactions[index],
                   color: _selectedReactionIndices[_currentIndex] == index
-                      ? Colors.white
+                      ? Color(0xff1adc20)
                       : Colors.white.withOpacity(0.7),
                   size: 32,
                 ),
