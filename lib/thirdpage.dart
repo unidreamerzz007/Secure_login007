@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class ThirdPage extends StatefulWidget {
   @override
@@ -16,6 +17,21 @@ class _ThirdPageState extends State<ThirdPage> {
     '4.Toxic friends thrive on drama and chaos, leaving you emotionally exhausted.',
     '5.Don\'t let toxic friends poison your self-worth and confidence.'
   ];
+
+  AudioPlayer audioPlayer = AudioPlayer();
+
+  // Function to play the "toxica.mp3" file
+  void playToxicaSong() async {
+    int result = await audioPlayer.play('assets/toxica.mp3', isLocal: true);
+
+    if (result == 1) {
+      // success
+      print('Audio play success');
+    } else {
+      // error
+      print('Error playing audio');
+    }
+  }
 
   @override
   void initState() {
@@ -59,6 +75,12 @@ class _ThirdPageState extends State<ThirdPage> {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
   }
 
   @override
@@ -217,6 +239,23 @@ class _ThirdPageState extends State<ThirdPage> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 16.0),
+                  ElevatedButton(
+                    onPressed: playToxicaSong,
+                    child: Text(
+                      'Play Toxic Song',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xff1239e5),
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -262,7 +301,6 @@ class _ThirdPageState extends State<ThirdPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushReplacementNamed(context, '/secureLogin');
-          // Or replace '/secureLogin' with '/secondPage' to navigate to the SecondPage
         },
         child: Icon(Icons.arrow_back),
         backgroundColor: Color(0xff16d273),
